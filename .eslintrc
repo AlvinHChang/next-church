@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "airbnb"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+}
