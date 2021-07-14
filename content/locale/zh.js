@@ -1,6 +1,22 @@
-// eslint-disable-next-line import/prefer-default-export
-export const zh = {
+const sharedTranslation = {
+  navBarHome: '主頁',
+  navBarSwitchLanguage: 'English',
+  navBarAbout: '教會簡介',
+  navBarNew: '新来的',
+};
+
+const zh = {
   '/': {
-    home: '主頁',
+  },
+  '/about': {
+  },
+  '/new': {
   },
 };
+
+Object.keys(zh).forEach((key) => {
+  zh[key] = { ...zh[key], ...sharedTranslation };
+});
+
+// eslint-disable-next-line import/prefer-default-export
+export { zh };

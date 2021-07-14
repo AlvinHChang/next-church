@@ -7,11 +7,24 @@ export default function Navbar() {
   const { formatMessage } = useIntl();
   const f = (id) => formatMessage({ id });
   const router = useRouter();
-  const { locale } = router;
+  const { locale, pathname } = router;
   return (
-    <div className={styles.container}>
-      <li>{f('home')}</li>
-      <li><Link href="/" locale={locale === 'en' ? 'zh' : 'en'}>test</Link></li>
-    </div>
+    <nav className={styles.container}>
+      <div>Logo Here</div>
+      <ul className={styles.linkContainer}>
+        <li className={styles.link}>
+          <Link href="/">{f('navBarHome')}</Link>
+        </li>
+        <li className={styles.link}>
+          <Link href="/about">{f('navBarAbout')}</Link>
+        </li>
+        <li className={styles.link}>
+          <Link href="/new">{f('navBarNew')}</Link>
+        </li>
+        <li className={styles.link}>
+          <Link href={pathname} locale={locale === 'en' ? 'zh' : 'en'}>{f('navBarSwitchLanguage')}</Link>
+        </li>
+      </ul>
+    </nav>
   );
 }

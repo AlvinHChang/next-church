@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 // import all locales through barrel file
 import * as locales from '../content/locale';
 import Navbar from '../components/Navbar';
+import Head from 'next/head';
 import '../styles/globals.css';
 
 // eslint-disable-next-line react/prop-types
@@ -20,6 +21,9 @@ function MyApp({ Component, pageProps }) {
       defaultLocale={defaultLocale}
       messages={messages}
     >
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar />
       <Component {...pageProps} />
     </IntlProvider>

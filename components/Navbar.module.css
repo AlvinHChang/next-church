@@ -1,6 +1,36 @@
 .container {
+    color: var(--primary);
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
+    background-color: var(--secondary);
+}
+
+
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+.linkContainer > * {
+    padding: 10px;
+}
+
+.link {
+    text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .container > * {
+        padding-right: 20px;
+    }
+    .linkContainer {
+        flex-direction: column;
+        font-size: xx-large;
+    }
 }
