@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 // import all locales through barrel file
 import * as locales from '../content/locale';
 import Navbar from '../components/Navbar';
-import Head from 'next/head';
 import '../styles/globals.css';
 
 // eslint-disable-next-line react/prop-types
