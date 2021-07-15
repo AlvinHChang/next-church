@@ -1,0 +1,11 @@
+.aboutContainer {
+    color: red;
+    width: 50%;
+}
+
+.picture {
+    object-fit: contain;
+}
+.pictureContainer {
+    max-width: 400px;
+}

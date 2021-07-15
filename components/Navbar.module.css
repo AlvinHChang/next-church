@@ -1,12 +1,12 @@
 .container {
     color: var(--primary);
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--secondary);
+    justify-content: flex-end;
 }
 
+.toggleButton {
+    background-color: #829AB1;
+}
 
 .linkContainer {
     display: flex;
@@ -21,10 +21,11 @@
     text-align: right;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 992px) {
     .container {
         flex-direction: column;
         align-items: flex-end;
+        justify-content: flex-start;
     }
     .container > * {
         padding-right: 20px;

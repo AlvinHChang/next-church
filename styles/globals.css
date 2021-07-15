@@ -6,6 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   --primary: #102A43;
   --secondary: #9FB3C8;
+  --breakpoint: 992px;
   background-color: var(--secondary);
 }
 
