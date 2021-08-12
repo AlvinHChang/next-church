@@ -11,7 +11,7 @@ export default function NavigationBar() {
   const router = useRouter();
   const { locale, pathname } = router;
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className={styles.navBar}>
       <Container>
         <Navbar.Brand>React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle className={styles.toggleButton} aria-controls="basic-navbar-nav" />

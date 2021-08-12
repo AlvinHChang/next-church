@@ -1,3 +1,8 @@
+.navBar {
+    background: var(--background-secondary);
+
+}
+
 .container {
     color: var(--primary);
     display: flex;
@@ -5,7 +10,7 @@
 }
 
 .toggleButton {
-    background-color: #829AB1;
+    background-color: var(--primary);
 }
 
 .linkContainer {
@@ -19,6 +24,7 @@
 
 .link {
     text-align: right;
+    color: var(--primary-text);
 }
 
 @media only screen and (max-width: 992px) {

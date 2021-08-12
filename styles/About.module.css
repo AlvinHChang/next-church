@@ -1,5 +1,5 @@
 .cardContainer {
-    padding: 30px;
+    padding: 5px;
     background-color: var(--secondary);
     height: 450px;
     width: 400px;
@@ -16,6 +16,7 @@
     justify-items: center;
     align-items: center;
     max-width: 1000px;
+    color: var(--primary-text);
 }
 
 .padding {
@@ -24,7 +25,6 @@
 
 @media only screen and (max-width: 992px) {
     .cardContainer {
-        padding: 5px;
         max-height: 320px;
         max-width: 280px;
     }
