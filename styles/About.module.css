@@ -1,11 +1,36 @@
-.aboutContainer {
-    color: red;
-    width: 50%;
+.cardContainer {
+    padding: 30px;
+    background-color: var(--secondary);
+    height: 450px;
+    width: 400px;
 }
 
-.picture {
-    object-fit: contain;
-}
 .pictureContainer {
-    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.textContainer {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.padding {
+    padding-right: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+    .cardContainer {
+        padding: 5px;
+        max-height: 320px;
+        max-width: 280px;
+    }
+
+    .padding {
+        padding-bottom: 20px;
+    }
+
 }

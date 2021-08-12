@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
+import globalStyles from '../styles/globals.module.css';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const { formatMessage } = useIntl();
   const f = (id) => formatMessage({ id });
   return (
-    <div className={styles.container}>
+    <div className={globalStyles.pageContainer}>
       <Head>
         <title>{f('navBarHome')}</title>
       </Head>

@@ -1,0 +1,23 @@
+.pageContainer {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.componentContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--component-background);
+    border: 1px solid var(--component-border);
+}
+
+@media only screen and (max-width: 992px) {
+    .componentContainer {
+        flex-direction: column;
+    }
+}
