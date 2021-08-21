@@ -8,6 +8,36 @@
   height: 100vh;
 }
 
+.eventContainer {
+  width: 800px;
+}
+
+.itemContainer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50px auto;
+  grid-template-areas: 
+    "eventdate eventname"
+    "eventdate eventtime";
+}
+
+.itemEventDate {
+  grid-area: eventdate;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.itemEventName {
+  grid-area: eventname;
+  font-size: 20px;
+}
+
+.itemEventTime {
+  grid-area: eventtime;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -118,4 +148,10 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+@media only screen and (max-width: 992px) {
+    .eventContainer {
+      width: 80%;
+    }
 }

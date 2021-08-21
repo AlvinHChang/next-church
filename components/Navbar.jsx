@@ -13,7 +13,7 @@ export default function NavigationBar() {
   return (
     <Navbar expand="lg" className={styles.navBar}>
       <Container>
-        <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand>True Light Lutheran Church</Navbar.Brand>
         <Navbar.Toggle className={styles.toggleButton} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className={styles.container} id="basic-navbar-nav">
           <ul className={styles.linkContainer}>

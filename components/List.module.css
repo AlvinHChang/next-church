@@ -1,0 +1,28 @@
+.title {
+  border-bottom: 1px solid var(--primary-text);
+  padding: 8px;
+  font-size: 14px;
+
+}
+
+.listContainer {
+  background-color: var(--background-secondary);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+
+.itemContainer {
+  cursor: pointer;
+  padding: 8px;
+  border-bottom: 1px solid var(--component-border);
+}
+
+.itemContainer:hover {
+  background-color: var(--background-primary);
+}
+
+.listContainer .itemContainer:last-child {
+  border-bottom: none;
+}
