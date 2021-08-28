@@ -24,6 +24,9 @@ export default function NavigationBar() {
               <Link href="/about">{f('navBarAbout')}</Link>
             </li>
             <li className={styles.link}>
+              <Link href="/sermon">{f('navBarSermon')}</Link>
+            </li>
+            <li className={styles.link}>
               <Link href="/new">{f('navBarNew')}</Link>
             </li>
             <li className={styles.link}>

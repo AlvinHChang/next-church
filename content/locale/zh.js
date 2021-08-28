@@ -3,6 +3,7 @@ const sharedTranslation = {
   navBarSwitchLanguage: 'English',
   navBarAbout: '教會簡介',
   navBarNew: '新来的',
+  navBarSermon: '讲道',
 };
 
 const zh = {
@@ -13,6 +14,8 @@ const zh = {
     seniorPastorCaption: '本堂',
     englishPastorBio: '',
     englishPastorCaption: '',
+  },
+  '/sermon': {
   },
   '/new': {
   },
