@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useIntl, FormattedDate, FormattedTime } from 'react-intl';
 import Form from 'react-bootstrap/Form';
@@ -7,12 +6,6 @@ import Button from 'react-bootstrap/Button';
 import globalStyles from '../styles/globals.module.css';
 import List from '../components/List';
 import styles from '../styles/EventManager.module.css';
-import prisma from '../lib/prisma';
-
-export const getStaticProps = async () => {
-  const events = await prisma.event.findMany();
-  return { props: { events } };
-};
 
 const BASE_URL = process.env.NEXT_PUBLIC_DEFAULT_URL || 'http://localhost:3000';
 
@@ -39,37 +32,67 @@ const deleteEvent = async (id) => fetch(`${BASE_URL}/api/event`, {
   }),
 });
 
-const EventList = ({ events }) => (
-  <List title="Events">
-    {events.map(({ name, date, id }) => (
-      <List.Item key={id}>
-        <div className={styles.itemContainer}>
-          <div className={styles.itemEventDate}>
-            <FormattedDate value={date} month="short" day="2-digit" />
-          </div>
-          <div className={styles.itemEventName}>{name}</div>
-          <div className={styles.itemEventTime}>
-            <FormattedTime value={date} weekday="short" />
-          </div>
-          <div className={styles.itemEventDelete}>
-            <Button onClick={() => deleteEvent(id)}>X</Button>
-          </div>
-        </div>
-      </List.Item>
-    ))}
-  </List>
-);
+// eslint-disable-next-line no-undef
+const getEvents = async () => fetch(`${BASE_URL}/api/event`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-EventList.propTypes = {
-  events: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-function Home({ events }) {
+export default function EventManager() {
   const { formatMessage } = useIntl();
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [eventTime, setEventTime] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    getEvents()
+      .then((res) => res.json())
+      .then((res) => setEvents(res.events));
+  }, []);
+
+  async function handleRemove(eventId) {
+    const res = await deleteEvent(eventId);
+    if (res.ok) {
+      const eventRemoved = events.filter(({ id }) => id !== eventId);
+      setEvents(eventRemoved);
+    }
+  }
+  async function handleAdd() {
+    if (eventDate && eventTime) {
+      setIsDisabled(true);
+      const eventDateTime = new Date(`${eventDate} ${eventTime}`);
+      const res = await createEvent(eventName, eventDateTime);
+      if (res.ok) {
+        const newEvent = await res.json();
+        events.push(newEvent);
+        setEvents(events);
+      }
+      setIsDisabled(false);
+    }
+  }
+  const EventList = () => (
+    <List title="Events">
+      {events.map(({ name, date, id }) => (
+        <List.Item key={id}>
+          <div className={styles.itemContainer}>
+            <div className={styles.itemEventDate}>
+              <FormattedDate value={date} month="short" day="2-digit" />
+            </div>
+            <div className={styles.itemEventName}>{name}</div>
+            <div className={styles.itemEventTime}>
+              <FormattedTime value={date} weekday="short" />
+            </div>
+            <div className={styles.itemEventDelete}>
+              <Button onClick={() => handleRemove(id)}>X</Button>
+            </div>
+          </div>
+        </List.Item>
+      ))}
+    </List>
+  );
   const f = (id) => formatMessage({ id });
   return (
     <div className={globalStyles.pageContainer}>
@@ -80,12 +103,7 @@ function Home({ events }) {
         <Form
           onSubmit={async (e) => {
             e.preventDefault();
-            if (eventDate && eventTime) {
-              setIsDisabled(true);
-              const eventDateTime = new Date(`${eventDate} ${eventTime}`);
-              await createEvent(eventName, eventDateTime);
-              setIsDisabled(false);
-            }
+            handleAdd();
           }}
         >
           <Form.Group className="mb-3">
@@ -99,19 +117,13 @@ function Home({ events }) {
             <Form.Control type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
           </Form.Group>
           <Button variant="primary" type="submit" disabled={isDisabled}>
-            Submit
+            Add Event
           </Button>
         </Form>
       </div>
       <div className={`${globalStyles.componentContainer} ${styles.eventContainer}`}>
-        <EventList events={events} />
+        <EventList />
       </div>
     </div>
   );
 }
-
-Home.propTypes = {
-  events: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default Home;

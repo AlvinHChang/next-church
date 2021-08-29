@@ -6,7 +6,9 @@ import List from '../components/List';
 import styles from '../styles/Home.module.css';
 import prisma from '../lib/prisma';
 
-export const getStaticProps = async () => {
+// TODO: Set as ServerSide props for now until publish should be used,
+// then we will switch to getStaticProps
+export const getServerSideProps = async () => {
   const events = await prisma.event.findMany();
   return { props: { events } };
 };

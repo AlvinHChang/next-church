@@ -12,11 +12,18 @@ const deleteEvent = async (id) => prisma.event.delete({
     id,
   },
 });
+const getEvents = async () => {
+  const events = await prisma.event.findMany();
+  return { events };
+};
 
 export default async function handler(req, res) {
   const { body } = req;
   let result = {};
   switch (req.method) {
+    case 'GET':
+      result = await getEvents();
+      break;
     case 'POST':
       result = await createEvent(body.name, body.date);
       break;
