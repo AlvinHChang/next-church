@@ -30,6 +30,9 @@ export default function NavigationBar() {
               <Link href="/new">{f('navBarNew')}</Link>
             </li>
             <li className={styles.link}>
+              <Link href="/eventManager">{f('navBarBeta')}</Link>
+            </li>
+            <li className={styles.link}>
               <Link href={pathname} locale={locale === 'en' ? 'zh' : 'en'}>{f('navBarSwitchLanguage')}</Link>
             </li>
           </ul>

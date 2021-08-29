@@ -21,7 +21,7 @@ function Item(props) {
 }
 
 List.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
   title: PropTypes.string,
 };
 
@@ -30,7 +30,7 @@ List.defaultProps = {
 };
 
 Item.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 List.Item = Item;
