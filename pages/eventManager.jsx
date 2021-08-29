@@ -14,8 +14,10 @@ export const getStaticProps = async () => {
   return { props: { events } };
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_DEFAULT_URL || 'http://localhost:3000';
+
 // eslint-disable-next-line no-undef
-const createEvent = async (name, date) => fetch('http://localhost:3000/api/event', {
+const createEvent = async (name, date) => fetch(`${BASE_URL}/api/event`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ const createEvent = async (name, date) => fetch('http://localhost:3000/api/event
 });
 
 // eslint-disable-next-line no-undef
-const deleteEvent = async (id) => fetch('http://localhost:3000/api/event', {
+const deleteEvent = async (id) => fetch(`${BASE_URL}/api/event`, {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',

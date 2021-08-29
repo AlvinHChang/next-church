@@ -2,6 +2,7 @@ const sharedTranslation = {
   navBarHome: 'home',
   navBarSwitchLanguage: '中文',
   navBarAbout: 'about',
+  navBarBeta: 'beta',
   navBarNew: 'newcomers',
   navBarSermon: 'sermons',
 };
@@ -22,6 +23,8 @@ const en = {
 Gwen Cattron grew up in Minnesota and came to know Jesus when she was 16 years old.  She joined Daystar Ministries, a non-denominational Christian ministry, in 1974 where she met her husband, Wendell.  They have seven children and six grandchildren. Gwen has a vocational call to Christian ministry and evangelism. She is ordained as a Senior Chaplain, and also holds a Diploma of Ministry. She assists Rev. Wendell, working alongside him at church.
     `,
     englishPastorCaption: '',
+  },
+  '/eventManager': {
   },
   '/sermon': {
   },
