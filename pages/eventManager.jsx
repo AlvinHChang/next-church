@@ -26,6 +26,7 @@ const createEvent = async (name, date) => fetch('http://localhost:3000/api/event
   }),
 });
 
+// eslint-disable-next-line no-undef
 const deleteEvent = async (id) => fetch('http://localhost:3000/api/event', {
   method: 'DELETE',
   headers: {
