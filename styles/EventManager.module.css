@@ -15,7 +15,7 @@
 .itemContainer {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 50px auto;
+  grid-template-columns: 50px auto 50px;
   grid-template-areas: 
     "eventdate eventname eventdelete"
     "eventdate eventtime eventdelete";
@@ -23,23 +23,38 @@
 
 .itemEventDate {
   grid-area: eventdate;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
-  vertical-align: middle;
+  justify-content: center;
 }
 
 .itemEventName {
   grid-area: eventname;
-  font-size: 20px;
+  font-size: larger;
+  padding-left: 5px;
 }
 
 .itemEventTime {
   grid-area: eventtime;
+  font-size: small;
+  padding-left: 5px;
+}
+
+.dateMonth {
+  font-size: 14px;
+
+}
+
+.dateDay {
+  font-size: 20px;
 }
 
 .itemEventDelete {
   grid-area: eventdelete;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .main {

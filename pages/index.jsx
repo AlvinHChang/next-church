@@ -9,17 +9,34 @@ import prisma from '../lib/prisma';
 // TODO: Set as ServerSide props for now until publish should be used,
 // then we will switch to getStaticProps
 export const getServerSideProps = async () => {
-  const events = await prisma.event.findMany();
+  const events = await prisma.event.findMany({
+    orderBy: [
+      {
+        date: 'asc',
+      },
+    ],
+    where: {
+      date: {
+        gte: new Date(),
+      },
+    },
+    take: 8,
+  });
   return { props: { events } };
 };
 
 const EventList = ({ events }) => (
-  <List title="Events">
+  <List title="Upcoming Events">
     {events.map(({ name, date, id }) => (
       <List.Item key={id}>
         <div className={styles.itemContainer}>
           <div className={styles.itemEventDate}>
-            <FormattedDate value={date} month="short" day="2-digit" />
+            <div className={styles.dateDay}>
+              <FormattedDate value={date} day="2-digit" />
+            </div>
+            <div className={styles.dateMonth}>
+              <FormattedDate value={date} month="short" />
+            </div>
           </div>
           <div className={styles.itemEventName}>{name}</div>
           <div className={styles.itemEventTime}>

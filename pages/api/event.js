@@ -1,17 +1,24 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import prisma from '../../lib/prisma';
 
-const createEvent = async (name, date) => prisma.event.create({
-  data: {
-    name,
-    date: new Date(date),
-  },
-});
+const createEvent = async (name, date) => {
+  const createDate = new Date(date);
+  if (createDate < Date.now()) { return [{}, 409]; }
+  const prismaResponse = await prisma.event.create({
+    data: {
+      name,
+      date: createDate,
+    },
+  });
+  return [prismaResponse, 200];
+};
+
 const deleteEvent = async (id) => prisma.event.delete({
   where: {
     id,
   },
 });
+
 const getEvents = async () => {
   const events = await prisma.event.findMany();
   return { events };
@@ -19,19 +26,20 @@ const getEvents = async () => {
 
 export default async function handler(req, res) {
   const { body } = req;
-  let result = {};
+  let response = {};
+  let statusCode = 200;
   switch (req.method) {
     case 'GET':
-      result = await getEvents();
+      response = await getEvents();
       break;
     case 'POST':
-      result = await createEvent(body.name, body.date);
+      [response, statusCode] = await createEvent(body.name, body.date);
       break;
     case 'DELETE':
-      result = await deleteEvent(body.id);
+      response = await deleteEvent(body.id);
       break;
     default:
       break;
   }
-  res.status(200).json(result);
+  res.status(statusCode).json(response);
 }

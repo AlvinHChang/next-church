@@ -45,7 +45,7 @@ export default function EventManager() {
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [eventTime, setEventTime] = useState('');
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [errorText, setErrorText] = useState('');
   const [events, setEvents] = useState([]);
   useEffect(() => {
     getEvents()
@@ -61,16 +61,14 @@ export default function EventManager() {
     }
   }
   async function handleAdd() {
-    if (eventDate && eventTime) {
-      setIsDisabled(true);
-      const eventDateTime = new Date(`${eventDate} ${eventTime}`);
-      const res = await createEvent(eventName, eventDateTime);
-      if (res.ok) {
-        const newEvent = await res.json();
-        events.push(newEvent);
-        setEvents(events);
-      }
-      setIsDisabled(false);
+    const eventDateTime = new Date(`${eventDate} ${eventTime}`);
+    const res = await createEvent(eventName, eventDateTime);
+    if (res.ok) {
+      const newEvent = await res.json();
+      events.push(newEvent);
+      setEvents(events);
+    } else {
+      setErrorText('Error Occurred');
     }
   }
   const EventList = () => (
@@ -79,7 +77,12 @@ export default function EventManager() {
         <List.Item key={id}>
           <div className={styles.itemContainer}>
             <div className={styles.itemEventDate}>
-              <FormattedDate value={date} month="short" day="2-digit" />
+              <div className={styles.dateDay}>
+                <FormattedDate value={date} day="2-digit" />
+              </div>
+              <div className={styles.dateMonth}>
+                <FormattedDate value={date} month="short" />
+              </div>
             </div>
             <div className={styles.itemEventName}>{name}</div>
             <div className={styles.itemEventTime}>
@@ -93,6 +96,25 @@ export default function EventManager() {
       ))}
     </List>
   );
+  const handleDateTimeValidation = (event, cb) => {
+    const { name, value } = event.target;
+    let newDate = null;
+    switch (name) {
+      case 'time':
+        newDate = new Date(`${eventDate} ${value}`);
+        break;
+      case 'date':
+        newDate = new Date(`${value} ${eventTime}`);
+        break;
+      default:
+        break;
+    }
+    if (newDate <= Date.now()) {
+      setErrorText('Error: Date and Time must be in the future.');
+    } else {
+      cb();
+    }
+  };
   const f = (id) => formatMessage({ id });
   return (
     <div className={globalStyles.pageContainer}>
@@ -111,14 +133,17 @@ export default function EventManager() {
             <Form.Control type="text" placeholder="What is the event?" value={eventName} onChange={(e) => setEventName(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Time</Form.Label>
-            <Form.Control type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)} />
             <Form.Label>Date</Form.Label>
-            <Form.Control type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+            <Form.Control name="date" type="date" value={eventDate} onChange={(e) => handleDateTimeValidation(e, () => setEventDate(e.target.value))} />
+            <Form.Label>Time</Form.Label>
+            <Form.Control name="time" type="time" value={eventTime} onChange={(e) => handleDateTimeValidation(e, () => setEventTime(e.target.value))} />
           </Form.Group>
-          <Button variant="primary" type="submit" disabled={isDisabled}>
-            Add Event
-          </Button>
+          <Form.Group className="mb-3">
+            <Button variant="primary" type="submit" disabled={!(eventName && eventDate && eventTime)}>
+              Add Event
+            </Button>
+          </Form.Group>
+          <Form.Text>{errorText}</Form.Text>
         </Form>
       </div>
       <div className={`${globalStyles.componentContainer} ${styles.eventContainer}`}>
