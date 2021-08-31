@@ -13,7 +13,15 @@ export default function NavigationBar() {
   return (
     <Navbar expand="lg" className={styles.navBar}>
       <Container>
-        <Navbar.Brand>True Light Lutheran Church</Navbar.Brand>
+      <Navbar.Brand href="#home">
+      <img
+        src="assets/images/Churchlogo1.png"
+
+        className="d-inline-block align-top logo_main"
+        alt="True Light Lutheran Church logo"
+      />
+    </Navbar.Brand>
+        <Navbar.Brand className="title_main">True Light Lutheran Church</Navbar.Brand>
         <Navbar.Toggle className={styles.toggleButton} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className={styles.container} id="basic-navbar-nav">
           <ul className={styles.linkContainer}>

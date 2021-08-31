@@ -23,3 +23,19 @@ a {
 * {
   box-sizing: border-box;
 }
+@media only screen and (max-width: 480px) {
+  .logo_main {
+    max-height: 50px;
+    width: auto;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .logo_main {
+    max-height: 150px;
+    width: auto;
+  }
+}
+.title_main
+{
+  
+}
