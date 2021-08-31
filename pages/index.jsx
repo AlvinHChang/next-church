@@ -17,7 +17,7 @@ const EventList = () => {
     fetch('/api/event')
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setEvents(response.events.map(parseEvents));
       });
   }, []);
