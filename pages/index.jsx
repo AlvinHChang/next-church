@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useIntl, FormattedDate, FormattedTime } from 'react-intl';
 import Button from 'react-bootstrap/Button';
 import globalStyles from '../styles/globals.module.css';
-import List from '../components/List';
 import styles from '../styles/Home.module.css';
+import List from '../components/List';
 import prisma from '../lib/prisma';
 
 // TODO: Set as ServerSide props for now until publish should be used,
@@ -63,7 +63,7 @@ function Home({ events }) {
         <title>{f('navBarHome')}</title>
       </Head>
       <div className={styles.mainImage}>
-        <div className={`${styles.landingContainer} ${globalStyles.componentContainerWithNoColor}`}>
+        <div className={styles.landingContainer}>
           <h1>
             {f('landingText')}
           </h1>

@@ -66,8 +66,9 @@
 }
 
 .landingContainer {
-  color: white;
+  display: flex;
   flex-direction: column;
+  color: white;
   justify-content: center;
   align-items: center;
 }

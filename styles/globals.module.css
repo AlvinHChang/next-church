@@ -5,30 +5,14 @@
   align-items: center;
 }
 
-.pageContainer > * {
-    margin-bottom: 30px;
-}
-
-.pageContainer > *:last-child {
-    margin-bottom: 0px;
-}
-
 .componentContainer {
     display: flex;
     flex-direction: row;
     padding: 30px;
-    margin: 0 .5em;
+    margin: 30px;
     border-radius: 10px;
     background-color: var(--component-background);
     border: 1px solid var(--component-border);
-}
-
-.componentContainerWithNoColor {
-    display: flex;
-    flex-direction: row;
-    padding: 30px;
-    margin: 0 .5em;
-    border-radius: 10px;
 }
 
 @media only screen and (max-width: 992px) {
