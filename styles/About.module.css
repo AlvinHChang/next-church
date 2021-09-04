@@ -6,7 +6,6 @@
 .cardContainer {
     padding: 5px;
     background-color: var(--secondary);
-    height: 450px;
     width: 400px;
 }
 

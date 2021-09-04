@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useIntl, FormattedDate, FormattedTime } from 'react-intl';
+import Button from 'react-bootstrap/Button';
 import globalStyles from '../styles/globals.module.css';
 import List from '../components/List';
 import styles from '../styles/Home.module.css';
@@ -60,6 +62,16 @@ function Home({ events }) {
       <Head>
         <title>{f('navBarHome')}</title>
       </Head>
+      <div className={styles.mainImage}>
+        <div className={`${styles.landingContainer} ${globalStyles.componentContainerWithNoColor}`}>
+          <h1>
+            {f('landingText')}
+          </h1>
+          <Button size="l">
+            <Link href="/new">{f('newHere')}</Link>
+          </Button>
+        </div>
+      </div>
       <div className={`${globalStyles.componentContainer} ${styles.eventContainer}`}>
         <EventList events={events} />
       </div>

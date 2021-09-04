@@ -50,6 +50,28 @@
   font-size: 20px;
 }
 
+.mainImage {
+  height: 60vh;
+  max-height: 800px;
+  width: 100%;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../public/this-way-to-freedom.jpg');
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 150px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.landingContainer {
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;

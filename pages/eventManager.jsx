@@ -65,8 +65,8 @@ export default function EventManager() {
     const res = await createEvent(eventName, eventDateTime);
     if (res.ok) {
       const newEvent = await res.json();
-      events.push(newEvent);
-      setEvents(events);
+      const newEventsArray = [...events, newEvent];
+      setEvents(newEventsArray);
     } else {
       setErrorText('Error Occurred');
     }

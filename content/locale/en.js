@@ -9,6 +9,8 @@ const sharedTranslation = {
 
 const en = {
   '/': {
+    landingText: 'Welcome to True Light Lutheran Church',
+    newHere: 'I\'m new here!',
   },
   '/about': {
     seniorPastorBio: `Rev. Lit Inn Wu, our Senior Pastor, was born in India into a Buddhist family. He came to know Jesus as his Savior at age 12 while studying in a Christian school. His favorite verse is John 3:16, ‘For God so loved the world that He gave His one and only Son, that whoever believes in Him will not perish but have everlasting life.’ He graduated from the Lutheran Theological Seminary in Hong Kong in 1990 where he also met his wife, Rev. Jenny Wu.
@@ -22,7 +24,7 @@ const en = {
 
 Gwen Cattron grew up in Minnesota and came to know Jesus when she was 16 years old.  She joined Daystar Ministries, a non-denominational Christian ministry, in 1974 where she met her husband, Wendell.  They have seven children and six grandchildren. Gwen has a vocational call to Christian ministry and evangelism. She is ordained as a Senior Chaplain, and also holds a Diploma of Ministry. She assists Rev. Wendell, working alongside him at church.
     `,
-    englishPastorCaption: '',
+    englishPastorCaption: 'Pastor Wendell and Gwen',
   },
   '/eventManager': {
   },

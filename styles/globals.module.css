@@ -1,19 +1,34 @@
 .pageContainer {
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.pageContainer > * {
+    margin-bottom: 30px;
+}
+
+.pageContainer > *:last-child {
+    margin-bottom: 0px;
 }
 
 .componentContainer {
     display: flex;
     flex-direction: row;
     padding: 30px;
+    margin: 0 .5em;
     border-radius: 10px;
     background-color: var(--component-background);
     border: 1px solid var(--component-border);
+}
+
+.componentContainerWithNoColor {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    margin: 0 .5em;
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 992px) {
