@@ -54,7 +54,7 @@
   height: 60vh;
   max-height: 800px;
   width: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../public/this-way-to-freedom.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25) ), url('../public/this-way-to-freedom.jpg');
   background-position-x: center;
   background-position-y: center;
   background-repeat: no-repeat;
@@ -71,6 +71,45 @@
   color: white;
   justify-content: center;
   align-items: center;
+}
+
+.button {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.weeklyMeetingsCard {
+  background-color: var(--component-background);
+  height: 350px;
+  width: 350px;
+  position: relative;
+  margin: 20px;
+}
+
+.weeklyMeetingsHeading {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  top: -20px;
+  margin-left: 2em;
+  margin-right: 2em;
+  background-color: var(--primary);
+  color: var(--component-background);
+  font-size: larger;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+.weeklyMeetingsDescription {
+  display: block;
+  padding: 30px;
+  color: var(--text-primary);
+}
+
+.weeklyMeetingsTime {
+  font-size: large;
 }
 
 .main {
@@ -182,6 +221,10 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .weeklyMeetingsCard {
+    width: auto;
+    height: auto;
   }
 }
 

@@ -3,9 +3,10 @@ import Head from 'next/head';
 import { useIntl, FormattedDate, FormattedTime } from 'react-intl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import globalStyles from '../styles/globals.module.css';
 import List from '../components/List';
 import styles from '../styles/EventManager.module.css';
+import PageContainer from '../components/containers/PageContainer';
+import ComponentContainer from '../components/containers/ComponentContainer';
 
 const BASE_URL = process.env.NEXT_PUBLIC_DEFAULT_URL || 'http://localhost:3000';
 
@@ -117,38 +118,40 @@ export default function EventManager() {
   };
   const f = (id) => formatMessage({ id });
   return (
-    <div className={globalStyles.pageContainer}>
+    <PageContainer>
       <Head>
         <title>{f('navBarHome')}</title>
       </Head>
-      <div className={`${globalStyles.componentContainer} ${styles.eventContainer}`}>
-        <Form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            handleAdd();
-          }}
-        >
-          <Form.Group className="mb-3">
-            <Form.Label>Event Name</Form.Label>
-            <Form.Control type="text" placeholder="What is the event?" value={eventName} onChange={(e) => setEventName(e.target.value)} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Date</Form.Label>
-            <Form.Control name="date" type="date" value={eventDate} onChange={(e) => handleDateTimeValidation(e, () => setEventDate(e.target.value))} />
-            <Form.Label>Time</Form.Label>
-            <Form.Control name="time" type="time" value={eventTime} onChange={(e) => handleDateTimeValidation(e, () => setEventTime(e.target.value))} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Button variant="primary" type="submit" disabled={!(eventName && eventDate && eventTime)}>
-              Add Event
-            </Button>
-          </Form.Group>
-          <Form.Text>{errorText}</Form.Text>
-        </Form>
-      </div>
-      <div className={`${globalStyles.componentContainer} ${styles.eventContainer}`}>
+      <ComponentContainer>
+        <div className={styles.eventContainer}>
+          <Form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              handleAdd();
+            }}
+          >
+            <Form.Group className="mb-3">
+              <Form.Label>Event Name</Form.Label>
+              <Form.Control type="text" placeholder="What is the event?" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Date</Form.Label>
+              <Form.Control name="date" type="date" value={eventDate} onChange={(e) => handleDateTimeValidation(e, () => setEventDate(e.target.value))} />
+              <Form.Label>Time</Form.Label>
+              <Form.Control name="time" type="time" value={eventTime} onChange={(e) => handleDateTimeValidation(e, () => setEventTime(e.target.value))} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Button variant="primary" type="submit" disabled={!(eventName && eventDate && eventTime)}>
+                Add Event
+              </Button>
+            </Form.Group>
+            <Form.Text>{errorText}</Form.Text>
+          </Form>
+        </div>
+      </ComponentContainer>
+      <div className={styles.eventContainer}>
         <EventList />
       </div>
-    </div>
+    </PageContainer>
   );
 }

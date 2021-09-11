@@ -11,6 +11,11 @@ const en = {
   '/': {
     landingText: 'Welcome to True Light Lutheran Church',
     newHere: 'I\'m new here!',
+    bibleStudy: 'Weekly Bible Study',
+    bibleStudyTime: '7:30pm',
+    bibleStudyDescription: 'Come for a more intimate time of eating dinner together, digging deeper into Bible and discussing it, and praying for each other.',
+    sundayService: 'Sunday Service',
+    sundayServiceTime: '11:30am',
   },
   '/about': {
     seniorPastorBio: `Rev. Lit Inn Wu, our Senior Pastor, was born in India into a Buddhist family. He came to know Jesus as his Savior at age 12 while studying in a Christian school. His favorite verse is John 3:16, ‘For God so loved the world that He gave His one and only Son, that whoever believes in Him will not perish but have everlasting life.’ He graduated from the Lutheran Theological Seminary in Hong Kong in 1990 where he also met his wife, Rev. Jenny Wu.
