@@ -79,6 +79,9 @@ const WeeklyMeetings = () => {
             <div className={styles.weeklyMeetingsDescription}>
               <div className={styles.weeklyMeetingsTime}>{f('sundayServiceTime')}</div>
               {f('sundayServiceDescription')}
+              <Button variant="outline-light" className={styles.button}>
+                <Link href="https://zoom.us/j/9159746550">Launch Zoom</Link>
+              </Button>
             </div>
           </div>
         </Col>

@@ -14,7 +14,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Hi New Person! Welcome to TrueLight
+          If you would like to get involved with the church.
         </h1>
       </main>
     </div>

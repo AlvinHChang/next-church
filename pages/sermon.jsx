@@ -14,7 +14,7 @@ export default function Sermon() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Hi New Person! Welcome to TrueLight
+          Work in Progress.
         </h1>
       </main>
     </div>

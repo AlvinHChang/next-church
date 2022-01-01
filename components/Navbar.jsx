@@ -13,7 +13,7 @@ export default function NavigationBar() {
   return (
     <Navbar expand="lg" className={styles.navBar}>
       <Container>
-        <div>True Light Lutheran Church</div>
+        <div className={styles.name}>True Light Lutheran Church</div>
         <Navbar.Toggle className={styles.toggleButton} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className={styles.container} id="basic-navbar-nav">
           <ul className={styles.linkContainer}>
